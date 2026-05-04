@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Career Mentor</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .result {
+            margin-top: 20px;
+            background: #eef;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Career Mentor</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Upload Resume (PDF):</label>
+        <input type="file" name="resume" required>
+
+        <label>Enter Job Role:</label>
+        <input type="text" name="role" placeholder="e.g. Data Analyst">
+
+        <label>Enter Job Skills (comma separated):</label>
+        <input type="text" name="job" placeholder="python,sql,excel">
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Result for {{ result.role }}</h2>
+
+        <p><b>Match Score:</b> {{ result.score }}%</p>
+        <p><b>Prediction:</b> {{ result.prediction }}</p>
+        <p><b>Job Priority:</b> {{ result.priority }}</p>
+
+        <p><b>Matched Skills:</b> {{ result.matched }}</p>
+        <p><b>Missing Skills:</b> {{ result.missing }}</p>
+
+        <h3>Growth Plan:</h3>
+        <ul>
+            {% for item in result.roadmap %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Schedule:</h3>
+        <ul>
+            {% for day in result.schedule %}
+                <li>{{ day }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+    <a href="/resume_builder">
+    <button>Create Resume</button>
+    </a>
