@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Create Your Resume</h1>
+
+<form method="POST" action="/create_resume">
+
+    <input type="text" name="name" placeholder="Full Name" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="text" name="phone" placeholder="Phone"><br><br>
+    <input type="text" name="linkedin" placeholder="LinkedIn"><br><br>
+
+    <textarea name="summary" placeholder="Profile Summary"></textarea><br><br>
+
+    <textarea name="skills" placeholder="Skills"></textarea><br><br>
+
+    <textarea name="education" placeholder="Education"></textarea><br><br>
+
+    <textarea name="experience" placeholder="Experience"></textarea><br><br>
+
+    <textarea name="projects" placeholder="Projects"></textarea><br><br>
+
+    <textarea name="certifications" placeholder="Certifications"></textarea><br><br>
+
+    <textarea name="achievements" placeholder="Achievements"></textarea><br><br>
+
+    <textarea name="languages" placeholder="Languages"></textarea><br><br>
+
+    <textarea name="hobbies" placeholder="Hobbies"></textarea><br><br>
+
+    <button type="submit">Download Resume PDF</button>
+
+</form>
+
+</body>
+</html>
